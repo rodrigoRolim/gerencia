@@ -5,6 +5,8 @@
  */
 package br.gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexandrelerario
@@ -114,11 +116,19 @@ public class CadCidade extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         br.data.entity.Cidade cid= new br.data.entity.Cidade();
-        int cod = Integer.parseInt(txtCod.getText());
-        String nome = txtNome.getText();
-        cid.setCodigo(cod);
-        cid.setNome(nome);
-        new br.data.crud.CrudCidade().persist(cid);
+        try{
+            int cod = Integer.parseInt(txtCod.getText());
+            cid.setCodigo(cod);
+            String nome = txtNome.getText();
+            cid.setNome(nome);
+            new br.data.crud.CrudCidade().persist(cid);
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,"entre com um numero","entrada invalida",1);
+        }
+   
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
