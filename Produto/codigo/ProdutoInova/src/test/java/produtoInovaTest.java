@@ -43,5 +43,6 @@ public class produtoInovaTest {
     // public void hello() {}
     @Test
     public void teste(){
+        assertEquals(1,1);
     }
 }
